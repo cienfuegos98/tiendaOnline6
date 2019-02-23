@@ -21,6 +21,8 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['pass'])) {
     header("Location:login.php?error=$error");
 }
 
+$disabled = "";
+
 $listado = obtenerListado($con);
 $cesta = Cesta::generaCesta();
 $addProducto = $cesta->mostrarCesta();
@@ -44,6 +46,12 @@ if ($_POST['accion']) {
         default:
             break;
     }
+}
+if (is_null($cesta->getProductos()) || empty($cesta->getProductos())) {
+    $disabled = "disabled";
+    $plantilla->assign('disabled', $disabled);
+} else {
+    $disabled = "";
 }
 $cesta->guardaCesta();
 $addProducto = $cesta->mostrarCesta();
