@@ -39,12 +39,11 @@ $tabla1 .= "</tbody>";
 foreach ($arrayProductos as $cod => $prod) {
     $cantidad += $prod[0];
 }
-$cantidad = $_POST['cantidad'];
-
+$_SESSION['cantidad'] = $cantidad;
 
 $total = $datos_cesta->calcularTotal();
 $IVA = $total * 0.21;
-$total = $_POST['total'];
+$_SESSION['total'] = $total;
 $pago = $total + $IVA;
 $hiddenPay = "";
 $cont = 1;

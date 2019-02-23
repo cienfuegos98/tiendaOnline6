@@ -34,17 +34,18 @@ class PDF extends FPDF {
     }
 
     function tablaBasica2($header2, $cantidad, $total) {
-
-
-        foreach ($header2 as $col) {
-
-            $this->Cell(40, 7, $col, 1);
-        }
-        $this->Ln();
+        $this->Cell(40, 7, $header2[0], 1);
         $this->Cell(40, 7, $cantidad, 1);
+        $this->Ln();
+        $this->Cell(40, 7, $header2[1], 1);
         $this->Cell(40, 7, $total, 1);
+        $this->Ln();
+        $this->Cell(40, 7, $header2[2], 1);
         $this->Cell(40, 7, $total * 0.21, 1);
+        $this->Ln();
+        $this->Cell(40, 7, $header2[3], 1);
         $this->Cell(40, 7, $total + $total * 0.21, 1);
+        $this->Ln();
     }
 
 // Pie de página
